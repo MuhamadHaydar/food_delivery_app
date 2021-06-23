@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_food_delivery_ui/data/data.dart';
+import 'package:flutter_food_delivery_ui/widgets/recent_orders.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key key}) : super(key: key);
@@ -13,6 +14,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         leading: IconButton(
           icon: Icon(
             Icons.account_circle,
@@ -31,11 +33,11 @@ class _HomeScreenState extends State<HomeScreen> {
           )
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: ListView(
-          children: [
-            TextField(
+      body: ListView(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: TextField(
               decoration: InputDecoration(
                 contentPadding: EdgeInsets.symmetric(vertical: 15),
                 border: OutlineInputBorder(
@@ -56,9 +58,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   onPressed: () {},
                 ),
               ),
-            )
-          ],
-        ),
+            ),
+          ),
+          RecentOrders(),
+        ],
       ),
     );
   }
