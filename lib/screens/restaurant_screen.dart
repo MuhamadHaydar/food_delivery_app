@@ -14,18 +14,82 @@ class RestaurantScreen extends StatefulWidget {
 }
 
 class _RestaurantScreenState extends State<RestaurantScreen> {
-
-  _buildMenuItem(Food menuItem){
+  _buildMenuItem(Food menuItem) {
     return Center(
       child: Stack(
+        alignment: Alignment.center,
         children: [
           Container(
             height: 175,
             width: 175,
-              decoration: BoxDecoration(
+            decoration: BoxDecoration(
                 // Here You have to continue 4:31
+                image: DecorationImage(
+                    image: AssetImage(menuItem.imageUrl), fit: BoxFit.cover),
+                borderRadius: BorderRadius.circular(15)),
+          ),
+          Container(
+            height: 175,
+            width: 175,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15.0),
+              gradient: LinearGradient(
+                begin: Alignment.topRight,
+                end: Alignment.bottomLeft,
+                colors: [
+                  Colors.black.withOpacity(0.3),
+                  Colors.black87.withOpacity(0.3),
+                  Colors.black54.withOpacity(0.3),
+                  Colors.black38.withOpacity(0.3),
+                ],
+                stops: [
+                  0.1,
+                  0.4,
+                  0.7,
+                  0.9,
+                ],
               ),
-          )
+            ),
+          ),
+          Positioned(
+            bottom: 65,
+            child: Column(
+              children: [
+                Text(
+                  menuItem.name,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: 1.2,
+                  ),
+                ),
+                Text(
+                  '\$${menuItem.price}',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: 1.2,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Positioned(bottom: 10, right: 10, child: Container(
+
+            width: 48,
+              decoration: BoxDecoration(
+                color: Theme.of(context).primaryColor,
+                borderRadius: BorderRadius.circular(30),
+              ),
+            child: IconButton(
+              icon: Icon(Icons.add),
+              iconSize: 30,
+                color: Colors.white,
+                onPressed: (){},
+            ),
+          ),)
         ],
       ),
     );
@@ -56,13 +120,13 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     IconButton(
-                       icon: Icon(
+                      icon: Icon(
                         Icons.chevron_left,
                         color: Colors.white,
                         size: 35,
                       ),
-                      onPressed: (){
-                         Navigator.of(context).pop();
+                      onPressed: () {
+                        Navigator.of(context).pop();
                       },
                     ),
                     IconButton(
@@ -71,8 +135,7 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                         size: 30,
                         color: Colors.red,
                       ),
-                      onPressed: (){
-                      },
+                      onPressed: () {},
                     )
                   ],
                 ),
@@ -116,7 +179,9 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              FlatButton(onPressed: (){}, padding: EdgeInsets.symmetric(horizontal: 30),
+              FlatButton(
+                onPressed: () {},
+                padding: EdgeInsets.symmetric(horizontal: 30),
                 color: Theme.of(context).primaryColor,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
@@ -126,7 +191,9 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                   style: TextStyle(color: Colors.white, fontSize: 20),
                 ),
               ),
-              FlatButton(onPressed: (){}, padding: EdgeInsets.symmetric(horizontal: 30),
+              FlatButton(
+                onPressed: () {},
+                padding: EdgeInsets.symmetric(horizontal: 30),
                 color: Theme.of(context).primaryColor,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
